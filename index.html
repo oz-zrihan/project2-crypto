@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Crypto</title>
+
+    <!-- Load plotly.js into the DOM -->
+    <script src="https://cdn.plot.ly/plotly-2.16.1.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js"></script> -->
+
+    <!-- chartCdn-->
+    <script src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
+    <script src="https://canvasjs.com/assets/script/jquery.canvasjs.min.js"></script>
+
+    <!--jQuery CDN-->
+    <script
+      src="https://code.jquery.com/jquery-3.6.1.min.js"
+      integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- BootStrap CDN-->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
+      crossorigin="anonymous"
+    />
+
+    <!-- Bootstrap icons CDN-->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css"
+    />
+    <!-- Index CSS-->
+    <link href="assets/index.css" rel="stylesheet" />
+  </head>
+  <body>
+    <!-- Header banner-->
+    <div class="Scroll_wrapper">
+      <header id="mainHeader">
+        <div class="content">
+          <h1 class="display-1 paralex-title">Crypto Currency</h1>
+          <h4 class="display-6 fs-3 paralex-title">Scroll Down</h4>
+
+          <div class="arrow arrow-first"></div>
+          <div class="arrow arrow-second"></div>
+          <div id="bitcoinParallax"></div>
+        </div>
+        <div id="parallax"></div>
+      </header>
+
+      <header id="aboutHeader" class="d-none">
+        <div class="content">
+          <h1 class="display-1 paralex-title">About Me</h1>
+          <div class="paralex-title"></div>
+          <div id="imageParallax"></div>
+        </div>
+        <div id="aboutParallax"></div>
+      </header>
+    </div>
+    <!-- NavBar -->
+
+    <nav class="navbar mb-4 navbar-expand-md bg-light">
+      <div class="container">
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarContent"
+          aria-controls="navbarContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active coins" target="#coinList">Coins</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link reports" id="liveReports" target="#reports"
+                >Live reports</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link about" target="#about">About</a>
+            </li>
+          </ul>
+          <!--serch-->
+          <form class="d-flex" role="search">
+            <input
+              class="form-control"
+              type="search"
+              placeholder="type to start search"
+              aria-label="Search"
+              id="search"
+              title="press ENTER to reset"
+            />
+          </form>
+        </div>
+      </div>
+    </nav>
+    <!-- sub menu-->
+
+    <nav class="nav subMenu container px-3 p-md-0">
+      <button class="btn ms-3" id="sortByValue">Sort By Coin Value</button>
+      <button
+        id="watchList"
+        class="btn"
+        type="button"
+        data-bs-toggle="offcanvas"
+        data-bs-target="#staticBackdrop"
+        aria-controls="staticBackdrop"
+      >
+        My Watch List
+      </button>
+    </nav>
+
+    <!-- Coin list section-->
+    <section id="coinList" class="container-md main_content">
+      <div class="row justify-content-center coinList px-sm-2"></div>
+    </section>
+
+    <!-- Real time reports Section-->
+    <section
+      id="noCoinsScreen"
+      class="d-none main_content d-flex justify-content-center align-items-center flex-column"
+    >
+      <h2 class="display-1 fw-bold text-center">
+        No Coin <br />
+        Was Selected!
+      </h2>
+      <a id="backToCoins" target="#coinList" class="d-block"
+        >Please Go Back And Select Up To Five Coins</a
+      >
+      <div class="animationPos">
+        <div class="AnimCoin"><i class="bi bi-currency-bitcoin"></i></div>
+        <div class="coin">
+          <div class="heads"></div>
+          <div class="tails"></div>
+        </div>
+      </div>
+    </section>
+    <section id="reports" class="container-md d-none main_content">
+      <div class="liveSec">
+        <h2 class="text-center">Cryptocurrency Prices</h2>
+        <p class="text-center RTMsub">Press on a coin name to hide it</p>
+
+        <!-- Realtime Chart-->
+        <div id="loadingRTMdata">
+          <p class="text-center retriv">Retrieving updated data</p>
+          <div class="progressbar">
+            <div class="counter">100</div>
+            <span class="progress"></span>
+          </div>
+        </div>
+        <div id="chartRTMContainer"></div>
+      </div>
+      <!--candleStick-->
+      <div class="liveSec">
+        <h2 class="text-center">CandleStick comparison</h2>
+        <p class="text-center">Press on a coin name to hide it</p>
+        <div id="myCandleStick"></div>
+      </div>
+
+      <!--circulation and supply paiChart-->
+      <div id="circulationContainer" class="liveSec circulationContainer row">
+        <div class="row" id="cont1"></div>
+        <div class="row" id="cont2"></div>
+      </div>
+    </section>
+
+    <!-- About section-->
+    <section id="about" class="container-md d-none main_content">
+      <div class="row">
+        <div class="profileImg col-sm-12 col-md-10 col-lg-4 my-3"></div>
+
+        <div class="col-sm-10 col-md-12 col-lg-8 my-3 px-3">
+          <p>
+            <strong
+              >Hi I’m Oz zrihan, Graphic designer and ui/ux expert by day And
+              Full-stack enthusiast by night.</strong
+            >
+            <br />
+            I finished my bachelor degree in Mass media and digital
+            communication with excellence. I got more the ten years of
+            experience in web design and ui/ux, And now it's the time to go up a
+            level, so I took a full-stack curse at “John Bryce”.
+          </p>
+          <p class="my-4">
+            This project meant to show my level at the middle of the curse and
+            to demonstrate the use of Ajax and jQuery.<br />
+            In this project I made an Ajax call using jQuery Ajax in order to
+            get the first 100 most popular digital coins. Every coin got is own
+            Ajax call to get more information about it, including the coin
+            summery, the coin value in shekel dollar and euro, and the last week
+            candle-stick chart. Also the user can add up to five coin to his
+            “watch list” so he could compare between the coins and get real time
+            information about then at “live reports” page.
+          </p>
+          <p>
+            As a graphic designer and ui/ux, I think a lot about the user
+            experience, even when I do something like “home project” so it was
+            important to me to add the full screen header with mouse animation
+            and parallax scrolling, also to add the loading animation at the
+            “live reports” page in order to give the chart some time to get its
+            first data call so the user won’t see empty chart at the beginning.
+          </p>
+          <p class="mt-4 fw-bold">Hope you enjoy this project</p>
+        </div>
+      </div>
+    </section>
+    <!-- Watch list OffCanvas-->
+    <div
+      class="offcanvas offcanvas-start p-3"
+      data-bs-backdrop="static"
+      tabindex="-1"
+      id="staticBackdrop"
+      aria-labelledby="staticBackdropLabel"
+    >
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="staticBackdropLabel">My Watch List</h5>
+      </div>
+      <p class="lead ms-3 pe-5 fs-6">
+        <span id="maxFive">Choose up to five coins,</span> <br />
+        that you want to get real time information about them
+      </p>
+      <div class="offcanvas-body">
+        <ul id="watchListBody"></ul>
+        <button
+          type="button"
+          class="mt-3 btn btn-secondary"
+          data-bs-dismiss="offcanvas"
+          aria-label="Close"
+          id="cancelChanges"
+        >
+          Close & cancel
+        </button>
+        <button
+          type="button"
+          class="mt-3 btn btn-primary"
+          data-bs-dismiss="offcanvas"
+          aria-label="Close"
+          id="saveChanges"
+        >
+          Save changes
+        </button>
+      </div>
+    </div>
+
+    <!-- BootStrap js-->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Index js-->
+    <script src="assets/jQueryDebounce.js"></script>
+    <script src="assets/index.js"></script>
+  </body>
+</html>

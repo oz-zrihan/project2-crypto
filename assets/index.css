@@ -1,0 +1,462 @@
+
+
+p{
+    margin-bottom: 0;
+}
+
+a{
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.main_content{
+    height: 100vh;
+}
+/* ======================================= main parallax =======================================*/
+.Scroll_wrapper{
+    display:block;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    -moz-transition: 0.1s;-o-transition: 0.1s;-webkit-transition: 0.1s;transition: 0.1s;
+    z-index: -1;
+}
+header {
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+    background-size: cover;
+    background: #000;
+   
+  }
+  .content{
+    position: relative;
+    display: block;
+    color: #FFFFFF;
+    top: 0;
+    text-align: center;
+    text-shadow: 6px 3px 6px rgb(0 0 0);
+    z-index: 10;
+  }
+#parallax {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background-image: url(https://raw.githubusercontent.com/oscicen/oscicen.github.io/master/img/depth-3.png), url(https://raw.githubusercontent.com/oscicen/oscicen.github.io/master/img/depth-2.png), url(https://raw.githubusercontent.com/oscicen/oscicen.github.io/master/img/depth-1.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-position: 50% 50%;
+    background-attachment: fixed;
+
+  }
+  #bitcoinParallax{
+    width: 100px;
+    position: relative;
+    height: 100px;
+    margin: 0 auto;
+    transform: translate(10px, 271px);
+    top: 0;
+    background-image: url(img/btc1-2.png);
+    background-size: contain;
+    z-index: -1;
+
+  }
+  .paralex-title{
+    position: relative;
+    top: 45vh;
+
+  }
+  h1 {
+    text-transform: uppercase;
+    opacity: .7;
+} 
+
+
+
+.arrow {
+    opacity: 0;
+    position: absolute;
+        left: 49.5%;
+        top: 250%;
+}
+
+.arrow-first {
+    animation: arrow-movement 2s ease-in-out infinite;
+}
+.arrow-second {
+    animation: arrow-movement 2s 1s ease-in-out infinite;
+}
+
+.arrow:before,
+.arrow:after {
+    background: #ffc107;
+    content: '';
+    display: block;
+    height: 3px; 
+    position: absolute;
+        top: 20px;
+        left: 0;
+    width: 20px;
+}
+
+.arrow:before {
+    transform: rotate(45deg) translateX(-23%);
+    transform-origin: top left;
+}
+
+.arrow:after {
+    transform: rotate(-45deg) translateX(23%);
+    transform-origin: top right;
+}
+
+@keyframes arrow-movement {
+    0% { 
+        opacity: 0;
+        top: 220%;
+    }
+    70% {
+        opacity: 1;
+    }
+    100% { 
+        opacity: 0;
+    }
+}
+
+/* ======================================= navBar ======================================= */
+.navbar{
+    transition: 0.5s ease ;
+}
+
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 9999;
+    filter: drop-shadow(0 1mm 4mm #7d7d7d);
+    transition: 0.5s ease ;
+  }
+
+.navbar > .container{
+    padding: 0;
+}
+.subMenu{
+    padding: 0;
+    margin: 1em auto;
+    flex-direction: row-reverse;
+  }
+  .subMenu > .btn{
+    background-color: #FFFFFF;
+    color: #000;
+    border: solid 1px #000;
+  }
+
+  #watchList{
+    background-color: #000;
+    color:#ffc107;
+  }
+  #watchList:hover{
+    background-color: #ffc107;
+    color:#000;
+  }
+
+  /* =======================================  Main section A  =  Coin list ======================================= */
+.card{
+    max-width: 95%;
+}
+.card-body{
+    padding: 1em 0;
+}
+.card-content{
+    padding: 0 1em 0 0;
+}
+.coin-info{
+    height: 160px;
+    overflow: scroll;
+    margin: 1em 0 0 0;
+    padding: 0;
+}
+
+.btn{
+    background-color: #000;
+
+}
+
+.btn:hover{
+    background-color: #ffc107;
+    color:rgb(65, 65, 65)
+}
+
+.form-check-input:checked {
+    background-color: #ffc107;
+    border-color: #000;}
+
+.show-more-slide{
+    border-radius: 0;
+    border-bottom: solid 1px #b7b7b7;
+    padding: 0;
+    outline:none;
+    background-color: #fff;
+}
+.show-more-slide:hover{
+    font-weight: bold;
+    background-color: #fff;
+    border-bottom: solid 2px #ffc107;
+}
+.show-more-slide:focus{
+    outline:none;
+    border-bottom: solid 2px #ffc107;
+}
+
+.spinner-border{
+    height: 20px;
+    width: 20px;
+    margin-right: 0.5em;
+    border-width: 3px;
+}
+.active-info{
+    outline:none;
+    border-bottom: solid 2px #ffc107;
+}
+
+
+.modal-body{
+    display: contents;
+}
+
+.modal-content{
+    border-radius: 15px 15px 0 0;
+    width: 120%;
+}
+.modal-header{
+    margin-bottom: 0.5em;
+    border-bottom: none;
+    width: 100%;
+}
+
+/*  ======================================= Main section B = live reports ======================================= */
+
+/* coin animation */
+#backToCoins{
+    color:grey;
+  }
+  #backToCoins:hover{
+    color:#FFDE00;
+    font-weight: bold;
+  }
+  .animationPos{
+    position: relative;
+    bottom: 190px;
+  }
+  .coin{
+    margin-top: 2em;
+	background: #FFDE00;
+	width: 10em;
+	height: 10em;
+	border-radius: 50%;
+	position: relative;
+    -webkit-transform-style: preserve-3d;
+	animation: spin 2s linear infinite;
+  }
+  .AnimCoin{
+    font-size: 8em;
+    position: relative;
+    top: 209px;
+    left: 16px;
+    -webkit-transform-style: preserve-3d;
+    animation:AnimCoin 2s linear infinite;
+    z-index: 1;
+    color: #fff;
+}
+	@keyframes AnimCoin{
+		0%{
+            opacity: 1;
+			transform: rotateY(0deg);
+		}
+        24%{ opacity: 1;}
+        25%{ opacity: 0;}
+        79%{opacity: 0;}
+        80%{opacity: 1;}
+		100%{
+          
+			transform: rotateY(360deg);
+		}
+	}
+
+	@keyframes spin{
+		0%{
+			transform: rotateY(0deg);
+		}
+		100%{
+			transform: rotateY(360deg);
+		}
+	}
+
+  
+	
+	.coin:before{
+		background-color: #FF9900;
+		position: absolute;
+		border-radius: 50%;
+		content: '';
+		height: 10em;
+		width: 10em;
+		-webkit-transform: translateZ(-0.75em);
+	}
+	
+	.coin:after{
+		background-color: #FF9900;
+		content: '';
+		left: 4.25em;
+		position: absolute;
+		height: 10em;
+		width: 0.75em;
+		z-index: -10;
+		-webkit-transform: rotateY(-90deg);
+		-webkit-transform-origin: 100% 50%;
+	}
+
+
+.tails{
+	background-color: #FF9900;
+	position: absolute;
+	border-radius: 50%;
+	content: '';
+
+	height: 10em;
+	width: 10em;
+	-webkit-transform: translateZ(-0.005em);
+	border: 1px solid #FF9900;
+}
+
+.heads{
+	background-color: #FFDE00;
+	position: absolute;
+	border-radius: 50%;
+	content: '';
+	height: 10em;
+	width: 10em;
+	-webkit-transform: translateZ(-0.755em);
+	border: 1px solid #FF9900;
+}
+
+
+/*======================================= progress bar -> real time chart loading  */
+#loadingRTMdata{
+    height: 370px;
+}
+.retriv{
+    position: relative;
+    top: 100px;
+}
+.progressbar {
+    position: relative;
+    max-width: 500px;
+    border-radius: 15px;
+    width: 100%;
+    margin: 8em auto 0;
+    height: 30px;
+    background: #ffc107;
+    overflow: hidden;
+  }
+  
+  span.progress {
+    position: absolute;
+    border-radius: 15px;
+    left: 0;
+    height: 100%;
+    top: 0;
+    bottom: 0;
+    width: 0;
+    background: #000;
+    transition: all .3s;
+  }
+
+  .counter{
+    position: relative;
+    z-index: 9;
+    transform: translate(20px, 3px);
+    color: #fff;
+  }
+
+  /* =======================================live report RTM Chart */
+.canvasjs-chart-credit{
+    display: none;
+}
+
+.canvasjs-chart-canvas{
+    width: 100% !important;
+    border-radius: 0 0 15px 15px;
+}
+#chartRTMContainer{
+    height: 370px;
+    width: 100%;
+}
+#chartRTMContainer canvas{
+    height: 370px;
+    width: 100%;
+}
+
+/* ======================================= live report candleStick*/ 
+.liveSec{
+    padding: 3em 0 0 0;
+    border-top: solid 1px #7d7d7d;
+    margin: 1em 0 2em 0;
+}
+
+/* ======================================= live report circulation Chart */
+
+.circulationContainer{
+    border-top: solid 1px #7d7d7d;
+    justify-content: space-around; 
+}
+.circulationChart{
+    height: 250px;
+    display: inline-block;
+}
+
+/* ======================================= Main section C = About ======================================= */
+.about-arrow{
+position: relative;
+}
+#aboutParallax {
+    position: relative;
+    width: 70%;
+    height: 90vh;
+    min-width: 710px;
+    margin: 0 auto;
+    transform: translate(0, -900px);
+    background-image: url(img/hailo.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+  }
+  #imageParallax{
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    margin: 0 auto;
+    top: 0;
+    background-image: url(img/dog.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: -1;
+
+  }
+
+
+
+  
+/*======================================= About me */
+.aboutParagraph{
+    margin: 0 1em
+}
+
+.profileImg{
+    background-image: url(img/profile.jpg);
+    background-size: cover;
+    background-position: center;
+    min-height: 400px;
+}
